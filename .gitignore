@@ -5,6 +5,12 @@
 /.pnp
 .pnp.js
 
+#others
+/.idea
+.env
+.env.prod
+.env.staging
+
 # testing
 /coverage
 
