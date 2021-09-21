@@ -3,6 +3,7 @@ import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import useConfig from "./config";
 import useViews from "./views";
+
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 const App = () => {

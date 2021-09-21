@@ -2,7 +2,7 @@ import React from "react";
 
 const MovieInfoOne = ({ movieNumberOne }) => {
   return (
-    <div style={styleContainer}>
+    <div style={styleContainer} >
       <img src="" style={styleImage}></img>
       <div style={{ padding: 15 }}>
         <h3>{movieNumberOne.title}</h3>
