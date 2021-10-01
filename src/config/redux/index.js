@@ -1,8 +1,8 @@
-import { createStore, applyMiddleware, compose } from "@reduxjs/toolkit";
-import { persistStore, persistReducer } from "redux-persist";
-import storage from "redux-persist/lib/storage";
-import thunk from "redux-thunk";
-import useModels from "../../models";
+import { createStore, applyMiddleware, compose } from '@reduxjs/toolkit';
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+import thunk from 'redux-thunk';
+import useModels from '../../models';
 
 /*
   useStoreConfig => HOOK
@@ -19,19 +19,21 @@ const useStoreConfig = () => {
   let middlewaresToApply = [thunk];
 
   const persistConfig = {
-    key: "root",
+    key: 'root',
     storage: storage,
     whitelist: [],
   };
 
   const persistReduce = persistReducer(persistConfig, reducers);
 
-  if (process.env.NODE_ENV === "development") {
-    const reduxInmmutableStateInvariant = require("redux-immutable-state-invariant").default();
+  if (process.env.ENVIRONMENT === 'dev') {
+    const reduxInmmutableStateInvariant =
+      require('redux-immutable-state-invariant').default();
     middlewaresToApply = [...middlewaresToApply, reduxInmmutableStateInvariant];
   }
 
-  const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+  const composeEnhancers =
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
   let store = createStore(
     persistReduce,
