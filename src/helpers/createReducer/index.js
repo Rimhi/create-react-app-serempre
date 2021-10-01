@@ -1,9 +1,13 @@
-const useCreateReducer =
-  () =>
-  (initialState, handler) =>
-  (state = initialState, action) =>
-    Object.prototype.hasOwnProperty.call(handler, action.type)
-      ? handler[action.type](state, action)
-      : state;
+const useCreateReducer = () => {
+  const createReducer =
+    (initialState, handler) =>
+    (state = initialState, action) =>
+      handler?.hasOwnProperty(action.type)
+        ? handler[action.type](state, action)
+        : state;
+  return {
+    createReducer,
+  };
+};
 
 export default useCreateReducer;
